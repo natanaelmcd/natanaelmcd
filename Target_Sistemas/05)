@@ -1,0 +1,22 @@
+def inverter_string(s):
+    # Inicializa uma string vazia para armazenar o resultado
+    resultado = ""
+    
+    # Itera sobre a string original do último caractere até o primeiro
+    for i in range(len(s) - 1, -1, -1):
+        resultado += s[i]
+    
+    return resultado
+
+def main():
+    # Solicita a entrada do usuário
+    string_original = input("Digite uma string para inverter: ")
+    
+    # Inverte a string
+    string_invertida = inverter_string(string_original)
+    
+    # Exibe o resultado
+    print(f"String invertida: {string_invertida}")
+
+if __name__ == "__main__":
+    main()

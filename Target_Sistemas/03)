@@ -1,0 +1,43 @@
+import json
+
+def analisar_faturamento(faturamento):
+    # Filtra os dias com faturamento maior que 0
+    valores = [v for v in faturamento.values() if v > 0]
+    
+    # Calcula o menor e maior valor de faturamento
+    menor_faturamento = min(valores)
+    maior_faturamento = max(valores)
+    
+    # Calcula a média mensal
+    media_mensal = sum(valores) / len(valores)
+    
+    # Conta o número de dias com faturamento acima da média
+    dias_acima_media = sum(1 for v in valores if v > media_mensal)
+    
+    return menor_faturamento, maior_faturamento, dias_acima_media
+
+def main():
+    # Exemplo de vetor de faturamento diário
+    faturamento = {
+        "01": 5000,
+        "02": 6000,
+        "03": 0,
+        "04": 7000,
+        "05": 0,
+        "06": 8000,
+        "07": 9000,
+        "08": 0,
+        "09": 10000,
+        "10": 11000,
+        "11": 0,
+        "12": 12000
+    }
+    
+    menor_faturamento, maior_faturamento, dias_acima_media = analisar_faturamento(faturamento)
+    
+    print(f"Menor valor de faturamento: R${menor_faturamento:.2f}")
+    print(f"Maior valor de faturamento: R${maior_faturamento:.2f}")
+    print(f"Número de dias acima da média: {dias_acima_media}")
+
+if __name__ == "__main__":
+    main()
